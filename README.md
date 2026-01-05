@@ -13,7 +13,7 @@ A premium, intelligent search interface designed for finance, audit, and legal p
 - **Infinite Scrolling:** Automatically loads more results when reaching the bottom of the page.
 - **API Integration:** Connects to `https://postman-echo.com/post` to simulate real-world backend interaction.
 
-### 2. "All Out" Creative Overhaul (Bonus)
+### 2. Creative Frontend
 - **Cinematic Experience:**
     - **Animated Mesh Background:** A living, breathing gradient background.
     - **Mouse Spotlight:** An interactive light source that follows the cursor.
