@@ -84,12 +84,7 @@ onUnmounted(() => {
 .input-wrapper {
   position: relative;
   width: 100%;
-  max-width: 100%; /* Align with results/container width */
-  transition: all 0.4s var(--ease-elastic);
-}
-
-.input-wrapper:focus-within {
-  transform: translateY(-2px); /* Subtle lift instead of width expansion */
+  max-width: 100%;
 }
 
 .search-icon {
@@ -98,7 +93,7 @@ onUnmounted(() => {
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-muted);
-  opacity: 0.6;
+  opacity: 0.8;
   pointer-events: none;
   transition: color 0.2s ease;
   width: 18px;
@@ -111,11 +106,11 @@ input {
   padding: 1rem 1.5rem 1rem 3rem;
   font-size: 1rem;
   color: var(--text-primary);
-  background: var(--brand-surface);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 12px;
-  box-shadow: var(--shadow-soft);
-  transition: all 0.2s var(--ease-smooth);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
   font-weight: 500;
 }
@@ -123,28 +118,24 @@ input {
 input::placeholder {
   color: var(--text-muted);
   font-weight: 400;
-  opacity: 0.6;
+  opacity: 0.8;
 }
 
 /* Hover State */
 input:hover {
-  border-color: rgba(0,0,0,0.1);
-  box-shadow: var(--shadow-hover);
-}
-
-[data-theme="dark"] input:hover {
-  border-color: rgba(255,255,255,0.15);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-md);
 }
 
 /* Focus State */
 input:focus {
   transform: translateY(-1px);
-  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-  border-color: var(--brand-accent);
+  box-shadow: var(--shadow-premium);
+  border-color: var(--brand-blue);
 }
 
 input:focus + .search-icon {
-  color: var(--text-primary);
+  color: var(--brand-blue);
   opacity: 1;
 }
 
@@ -159,17 +150,17 @@ input:focus + .search-icon {
   font-size: 0.75rem;
   color: var(--text-muted);
   pointer-events: none;
-  opacity: 0.6;
 }
 
 .key {
-  border: 1px solid var(--border-subtle);
-  padding: 0.1rem 0.3rem;
+  border: 1px solid var(--border-focus);
+  padding: 0.15rem 0.35rem;
   border-radius: 4px;
-  background: var(--brand-muted);
+  background: var(--bg-surface-hover);
   font-family: inherit;
   font-weight: 500;
   min-width: 1.2em;
   text-align: center;
+  font-size: 0.7rem;
 }
 </style>

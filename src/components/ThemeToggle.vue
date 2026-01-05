@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-const isDark = ref(false);
+const isDark = ref(true); // Default to Dark Mode
 
 const toggleTheme = () => {
   isDark.value = !isDark.value;
@@ -11,14 +11,14 @@ const toggleTheme = () => {
 const updateTheme = () => {
   const theme = isDark.value ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('theme', theme);
+  localStorage.setItem('app-theme-v2', theme);
 };
 
 onMounted(() => {
-  const savedTheme = localStorage.getItem('theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  
-  if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  const savedTheme = localStorage.getItem('app-theme-v2');
+  if (savedTheme === 'light') {
+    isDark.value = false;
+  } else {
     isDark.value = true;
   }
   updateTheme();
@@ -56,19 +56,20 @@ onMounted(() => {
   background: transparent;
   border: 1px solid var(--border-subtle);
   border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all var(--transition-fast);
-  color: var(--brand-accent);
+  transition: all 0.2s ease;
+  color: var(--text-muted);
 }
 
 .theme-toggle:hover {
-  background: var(--brand-surface-hover);
+  background: var(--bg-surface-hover);
   border-color: var(--border-focus);
+  color: var(--text-primary);
 }
 
 .icon {

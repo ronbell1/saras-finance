@@ -39,44 +39,14 @@ const toggleExpand = () => {
 
 <style scoped>
 .result-item {
-  background: var(--brand-surface);
-  border: 1px solid transparent; /* Prepare for border transition */
+  background: var(--bg-surface);
+  border: 1px solid transparent;
   border-bottom: 1px solid var(--border-subtle);
-  padding: 2rem 2.5rem; 
+  padding: 1.75rem 2rem;
   cursor: pointer;
-  transition: transform 0.1s ease-out, box-shadow 0.3s var(--ease-smooth), background 0.3s ease; /* Fast transform for tilt */
+  transition: all 0.2s var(--ease-out);
   position: relative;
-  transform-style: preserve-3d; /* Enable 3D children */
-}
-
-/* Glow Effect */
-.glow-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    800px circle at var(--mouse-x) var(--mouse-y), 
-    rgba(255, 255, 255, 0.06),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.result-item:hover .glow-overlay {
-  opacity: 1;
-}
-
-.result-item.tilting {
-  z-index: 20; /* Pop above siblings when tilting */
-  box-shadow: 
-    0 20px 40px -10px rgba(0,0,0,0.1),
-    0 0 0 1px rgba(0,0,0,0.05); /* Deep shadow during tilt */
+  overflow: hidden;
 }
 
 .result-item:first-child {
@@ -91,81 +61,102 @@ const toggleExpand = () => {
 }
 
 .result-item:hover {
-  background: var(--brand-surface-hover);
-  border-color: var(--border-focus);
+  background: var(--bg-surface-hover);
+  z-index: 2; /* Bring above siblings */
+}
+
+/* Expanded State */
+.result-item.expanded {
+  background: var(--bg-surface);
+  box-shadow: var(--shadow-premium);
+  border-color: var(--border-subtle);
+  border-radius: var(--radius-lg) !important;
+  margin: 1.5rem -1rem; /* Negative margin to expand outwards slightly */
+  z-index: 10;
+  position: relative;
 }
 
 .item-content {
-  /* No extra padding needed here since parent handles it, 
-     but we can use this for internal alignment if needed */
+  position: relative;
+  z-index: 2;
 }
 
 .result-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 0.75rem;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1rem;
 }
 
 .title {
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
+  transition: color 0.2s ease;
+}
+
+.result-item:hover .title {
+  color: var(--brand-blue);
 }
 
 .expand-icon {
   color: var(--text-muted);
-  transition: transform 0.4s var(--ease-elastic);
+  transition: transform 0.3s var(--ease-out), color 0.2s;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(0,0,0,0.02);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  background: transparent;
+}
+
+.result-item:hover .expand-icon {
+  color: var(--text-primary);
+  background: rgba(0,0,0,0.03);
 }
 
 .snippet {
+  margin-top: 0.5rem;
   color: var(--text-secondary);
   font-size: 0.95rem;
   line-height: 1.6;
-  max-width: 90%; /* Optimize line length for reading */
+  max-width: 95%;
 }
 
 .details-wrapper {
   transition: 
-    max-height 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
-    opacity 0.4s ease 0.1s;
+    max-height 0.4s var(--ease-out),
+    opacity 0.3s ease 0.1s;
   overflow: hidden;
 }
 
 .details {
   padding-top: 1.5rem;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.6;
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+  line-height: 1.7;
   border-top: 1px solid var(--border-subtle);
   margin-top: 1.5rem;
 }
 
-/* Expansion States */
+/* Icon Rotation */
 .expanded .expand-icon {
   transform: rotate(180deg);
-  background: var(--brand-primary);
+  background: var(--brand-blue);
   color: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.result-item.expanded {
-  background: var(--brand-surface);
-  box-shadow: var(--shadow-soft);
-  z-index: 5;
-  border-radius: var(--radius-lg) !important;
-  margin: 1rem 0; /* Add margin when expanded to separate from list */
-  border: 1px solid var(--border-subtle);
+.expanded:hover .expand-icon {
+  background: var(--brand-blue);
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .result-item.expanded {
+    margin: 1rem 0;
+  }
 }
 </style>

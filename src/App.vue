@@ -151,10 +151,9 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 1rem 0;
+  padding: 0.75rem 0;
   transition: all 0.3s ease;
 }
-
 
 .header-content {
   max-width: var(--max-width);
@@ -172,7 +171,7 @@ onUnmounted(() => {
 }
 
 .brand-logo {
-  height: 32px;
+  height: 28px;
   width: auto;
   border-radius: 6px;
 }
@@ -185,35 +184,25 @@ onUnmounted(() => {
 
 .btn-dashboard {
   text-decoration: none;
-  font-size: 0.9rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: var(--brand-blue);
-  background: rgba(37, 99, 235, 0.05);
+  color: var(--text-primary);
+  opacity: 0.8;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  border-radius: var(--radius-sm);
   transition: all 0.2s ease;
 }
 
-[data-theme="dark"] .btn-dashboard {
-  background: rgba(37, 99, 235, 0.15);
-  color: #60a5fa;
-  border-color: rgba(96, 165, 250, 0.3);
-}
-
 .btn-dashboard:hover {
-  background: var(--brand-blue);
-  color: white;
-  border-color: var(--brand-blue);
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  background: var(--bg-surface-hover);
+  opacity: 1;
 }
 
 /* Layout Styles */
 .main-wrapper {
   width: 100%;
-  padding-top: 7rem;
-  padding-bottom: 4rem;
+  padding-top: 8rem;
+  padding-bottom: 6rem;
   display: flex;
   justify-content: center;
 }
@@ -226,47 +215,45 @@ onUnmounted(() => {
 
 .hero-section {
   text-align: center;
-  margin-bottom: 3.5rem;
-  animation-delay: 0.1s;
+  margin-bottom: 4rem;
 }
 
 .search-title {
-  font-size: 2.25rem;
-  font-weight: 800;
-  margin: 0 0 0.5rem 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 0 1rem 0;
   color: var(--text-primary);
   letter-spacing: -0.03em;
-  background: linear-gradient(135deg, var(--brand-blue) 30%, var(--accent-secondary));
+  background: linear-gradient(135deg, var(--text-primary) 30%, var(--text-muted));
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .subtitle {
   color: var(--text-secondary);
-  font-size: 1.1rem;
-  margin-bottom: 2rem;
-  opacity: 0.8;
+  font-size: 1.125rem;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
 }
 
-/* H1 */
+/* H1 Override for Header */
 h1 {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 600;
   margin: 0;
-  color: var(--brand-blue) !important;
-  letter-spacing: -0.02em;
-  background: none;
-  -webkit-text-fill-color: initial;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.01em;
 }
 
 .intro-section {
   text-align: center;
   color: var(--text-muted);
-  margin-top: 2rem;
-  padding: 3rem;
+  margin-top: 4rem;
+  padding: 4rem 2rem;
   border: 1px dashed var(--border-subtle);
   border-radius: var(--radius-lg);
-  max-width: 500px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -277,21 +264,22 @@ h1 {
 
 .related-badge {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 .related-badge span {
-  background: var(--brand-muted);
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   color: var(--text-secondary);
-  padding: 0.4rem 0.8rem;
-  border-radius: 6px;
+  padding: 0.4rem 1rem;
+  border-radius: 99px;
   font-size: 0.85rem;
   font-weight: 500;
+  box-shadow: var(--shadow-sm);
 }
 
 .scroll-trigger {
-  padding: 3rem 0;
+  padding: 4rem 0;
   text-align: center;
   color: var(--text-muted);
 }
@@ -300,15 +288,15 @@ h1 {
   width: 20px;
   height: 20px;
   border: 2px solid var(--border-subtle);
-  border-left-color: var(--text-secondary);
+  border-left-color: var(--text-primary);
   border-radius: 50%;
   margin: 0 auto;
   animation: spin 1s linear infinite;
 }
 
 .end-of-results {
-  font-size: 0.85rem;
-  opacity: 0.6;
+  font-size: 0.875rem;
+  opacity: 0.7;
 }
 
 @keyframes spin {
@@ -317,7 +305,7 @@ h1 {
 
 @media (max-width: 640px) {
   .search-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 }
 </style>
